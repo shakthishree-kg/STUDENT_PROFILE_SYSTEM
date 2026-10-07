@@ -1,0 +1,40 @@
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: blue;
+}
+
+main section {
+  margin-bottom: 25px;
+}
+
+.student-profile {
+  width: 350px;
+  margin: 10px auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: left;
+  background-color: white;
+}
+
+.student-profile h3 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.footer {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: lightgray;
+  text-align: center;
+}
