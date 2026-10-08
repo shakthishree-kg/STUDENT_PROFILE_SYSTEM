@@ -3,6 +3,7 @@
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .header {
@@ -13,23 +14,61 @@
   color: blue;
 }
 
-main section {
-  margin-bottom: 25px;
+main {
+  min-height: 400px;
 }
 
 .student-profile {
-  width: 350px;
-  margin: 10px auto;
-  padding: 20px;
+  width: 400px;
+  margin: 25px auto;
+  padding: 25px;
   border: 2px solid black;
   border-radius: 8px;
   text-align: left;
   background-color: white;
 }
 
-.student-profile h3 {
+.student-profile h2 {
   text-align: center;
   margin-top: 0;
+}
+
+.student-profile p {
+  margin: 12px 0;
+}
+
+.practice-count {
+  font-size: 18px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-group button {
+  background-color: blue;
+  color: white;
+}
+
+.button-group button:hover {
+  opacity: 0.85;
+}
+
+.toggle-button {
+  background-color: gray;
+  color: white;
+  margin-bottom: 10px;
 }
 
 .footer {

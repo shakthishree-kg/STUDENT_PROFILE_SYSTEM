@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
 // Header Component
@@ -9,17 +10,60 @@ function Header() {
   );
 }
 
-// Reusable StudentProfile Component
-function StudentProfile({ name, department, year }) {
+// StudentProfile Component
+function StudentProfile({
+  name,
+  department,
+  year,
+  count,
+  setCount
+}) {
+
+  // Update document title whenever count changes
+  useEffect(() => {
+    const previousTitle = document.title;
+
+    document.title = `Practice Sessions: ${count}`;
+
+    // Cleanup function
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [count]);
+
   return (
     <div className="student-profile">
-      <h3>{name}</h3>
+
+      <h2>Student Profile</h2>
+
+      <p>
+        <strong>Name:</strong> {name}
+      </p>
+
       <p>
         <strong>Department:</strong> {department}
       </p>
+
       <p>
         <strong>Year:</strong> {year}
       </p>
+
+      <p className="practice-count">
+        <strong>Practice Sessions:</strong> {count}
+      </p>
+
+      <div className="button-group">
+
+        <button onClick={() => setCount(count + 1)}>
+          Complete Practice
+        </button>
+
+        <button onClick={() => setCount(0)}>
+          Reset
+        </button>
+
+      </div>
+
     </div>
   );
 }
@@ -35,18 +79,17 @@ function Footer() {
 
 // Main App Component
 function App() {
-  // Student details
-  const student1 = {
-    name: 'Anu',
-    department: 'CSE',
-    year: '3rd Year'
-  };
 
-  const student2 = {
-    name: 'Bala',
-    department: 'Computer Science',
-    year: '3rd Year'
-  };
+  // Student details
+  const studentName = 'Anu';
+  const studentDepartment = 'CSE';
+  const studentYear = '3rd Year';
+
+  // Practice count state
+  const [count, setCount] = useState(0);
+
+  // Profile visibility state
+  const [showProfile, setShowProfile] = useState(true);
 
   return (
     <div className="container">
@@ -54,25 +97,24 @@ function App() {
       <Header />
 
       <main>
-        <section>
-          <h2>Student 1</h2>
 
+        <button
+          className="toggle-button"
+          onClick={() => setShowProfile(!showProfile)}
+        >
+          {showProfile ? 'Hide Profile' : 'Show Profile'}
+        </button>
+
+        {showProfile && (
           <StudentProfile
-            name={student1.name}
-            department={student1.department}
-            year={student1.year}
+            name={studentName}
+            department={studentDepartment}
+            year={studentYear}
+            count={count}
+            setCount={setCount}
           />
-        </section>
+        )}
 
-        <section>
-          <h2>Student 2</h2>
-
-          <StudentProfile
-            name={student2.name}
-            department={student2.department}
-            year={student2.year}
-          />
-        </section>
       </main>
 
       <Footer />
